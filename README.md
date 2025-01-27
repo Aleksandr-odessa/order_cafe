@@ -8,7 +8,7 @@
 
 ### 1. Клонируйте репозиторий:
 
-## git clone https://github.com/Aleksandr-odessa/order_cafe.git
+`git clone https://github.com/Aleksandr-odessa/order_cafe.git`
 
 ### 2. Установите Python и pip
 
@@ -36,11 +36,11 @@
 ## Тестирование
 ### Что бы протестировать приложение с помощью APITestCase:
 
-## python manage.py test orders.test_api.OrderAPITestCase
+`python manage.py test orders.test_api.OrderAPITestCase`
 
 ### Что бы протестировать приложение с помощью TestCase
 
-## python manage.py test orders.tests.tests.OrderViewsTest
+`python manage.py test orders.tests.tests.OrderViewsTest`
 
 
 
