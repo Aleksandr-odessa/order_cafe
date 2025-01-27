@@ -1,0 +1,37 @@
+<h1>Создать Заказ</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if error %}
+    <h1>{{ error }} </h1>
+    {% endif %}
+    {% if dishes %}
+    <h3>Выберите блюда:</h3>
+    <div>
+        {% for dish in dishes %}
+                    <button type="button" class="dish-button" data-name="{{ dish.name }}" data-price="{{ dish.price }}">
+                    {{ dish.name }} - {{ dish.price }} руб.
+                        </button>
+        {% endfor %}
+    </div>
+<h3>Выбранные блюда:</h3>
+    <ul id="selected-dishes"></ul>
+    <input type="hidden" name="items" id="items" value="[]">
+    {% endif %}
+    <button type="submit">Сохранить</button>
+</form>
+<a href="{% url 'order_list' %}">Назад</a>
+<script>
+    const selectedDishes = [];
+    document.querySelectorAll('.dish-button').forEach(button => {
+    button.addEventListener('click', function () {
+        const name = this.getAttribute('data-name');
+        const price = this.getAttribute('data-price');
+        selectedDishes.push({ name: name, price: parseFloat(price) });
+        const li = document.createElement('li');
+        li.textContent = `${name} - ${price} руб.`;
+        document.getElementById('selected-dishes').appendChild(li);
+        document.getElementById('items').value = JSON.stringify(selectedDishes);
+    });
+    });
+    </script>

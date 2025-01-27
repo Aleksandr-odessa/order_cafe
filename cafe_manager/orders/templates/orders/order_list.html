@@ -1,0 +1,28 @@
+<h1>Список заказов</h1>
+<a href="{% url 'order_create' %}">Добавить заказ</a>
+<a href="{% url 'order_search' %}">Поиск заказа</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Номер стола</th>
+        <th>Блюда</th>
+        <th>Стоимость</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    {% for order in orders_show %}
+    <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.table_number }}</td>
+        <td>{{ order.items }} </td>
+        <td>{{ order.total_price }}</td>
+        <td>{{ order.get_status_display }}</td>
+        <td>
+            <a href="{% url 'order_update' order.id %}">Редактировать</a>
+            <a href="{% url 'order_delete' order.id %}">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'revenue_report' %}">Посмотреть выручку</a>

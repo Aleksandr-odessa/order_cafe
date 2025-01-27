@@ -1,0 +1,21 @@
+{% if form %}
+<h1>Найти заказ</h1>
+<form method="post">
+    {% csrf_token %}
+    <p><input type="search" name="search" placeholder="Поиск по номеру стола или статусу заказа"> </p>
+    <button type="submit">Найти</button>
+</form>
+<a href="{% url 'order_list' %}">Список заказов</a>
+{% else %}
+<h1>Результат поиска</h1>
+{% for res in result %}
+<p> {{res}} </p>
+{% endfor %}
+
+<!--<form method="post">-->
+<!--    {% csrf_token %}-->
+<!--    <p><input type="search" name="search" placeholder="Поиск по номеру стола или статусу заказа"> </p>-->
+<!--    <button type="submit">Найти</button>-->
+<!--</form>-->
+<a href="{% url 'order_list' %}">Список заказов</a>
+{% endif %}
