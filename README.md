@@ -8,76 +8,40 @@
 
 ### 1. Клонируйте репозиторий:
 
-### git clone https://github.com/Aleksandr-odessa/order_cafe.git
+## git clone https://github.com/Aleksandr-odessa/order_cafe.git
 
 ### 2. Установите Python и pip
-Убедитесь, что у вас установлен Python версии 3.6 или выше. Также убедитесь, что у вас установлен пакетный менеджер pip. Вы можете проверить это с помощью следующих команд:
 
-python --version
-pip --version
-Если Python или pip не установлены, скачайте и установите их с
-официального сайта Python
-.
-
-3. Создайте виртуальное окружение
-Рекомендуется создать виртуальное окружение для изоляции зависимостей проекта:
-
- 
-# На Windows
-python -m venv venv
-
-# На macOS/Linux
-python3 -m venv venv
-4. Активируйте виртуальное окружение
-Активируйте ваше виртуальное окружение:
-
- 
-# На Windows
-venv\Scripts\activate
-
-# На macOS/Linux
-source venv/bin/activate
-5. Установите зависимости
+### 2. Установите зависимости
 Установите необходимые зависимости из файла requirements.txt:
+### 3. Перейдите в каталог проекта cafe_manager
 
- 
-pip install -r requirements.txt
-6. Настройте базу данных
-Перед запуском проекта необходимо настроить базу данных. Убедитесь, что у вас установлен
-PostgreSQL
-или другая поддерживаемая база данных.
-
-Измените параметры подключения к базе данных в файле cafe_manager/settings.py. Например:
-
- 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'имя_вашей_базы_данных',
-        'USER': 'ваш_пользователь',
-        'PASSWORD': 'ваш_пароль',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-7. Примените миграции
+### 4. Примените миграции
 После настройки базы данных примените миграции:
-
  
-python manage.py migrate
-8. Создайте суперпользователя
+## python manage.py migrate
+
+### 5. Создайте суперпользователя
 Создайте суперпользователя для доступа к административной панели Django:
 
- 
-python manage.py createsuperuser
+## python manage.py createsuperuser
 Следуйте инструкциям на экране, чтобы задать имя пользователя, адрес электронной почты и пароль.
 
-9. Запустите сервер разработки
-Теперь вы готовы запустить сервер разработки:
+### 6. Запустите сервер разработки
 
- 
-python manage.py runserver
-Откройте браузер и перейдите по адресу http://127.0.0.1:8000/, чтобы увидеть ваше приложение.
+## python manage.py runserver
+Откройте браузер и перейдите по адресу http://127.0.0.1:8000/orders/, чтобы увидеть приложение.
+
+
+## Тестирование
+### Что бы протестировать приложение с помощью APITestCase:
+
+## python manage.py test orders.test_api.OrderAPITestCase
+
+### Что бы протестировать приложение с помощью TestCase
+
+## python manage.py test orders.tests.tests.OrderViewsTest
+
 
 
 
